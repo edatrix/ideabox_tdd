@@ -21,8 +21,12 @@ class IdeaManagementTest < Minitest::Test
   end
 
   def test_manage_ideas
+    # skip
     IdeaStore.save Idea.new("eat", "chocolate chip cookies")
     visit '/'
-    assert page.has_content?("chocolate chip cookies")
+    fill_in 'title', :with => 'eat'
+    fill_in 'description', :with => 'chocolate chip cookies'
+    click_button 'Save'
+    assert page.has_content?("chocolate chip cookies"), "Idea is not on page"
   end
 end
