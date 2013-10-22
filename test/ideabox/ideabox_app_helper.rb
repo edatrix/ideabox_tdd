@@ -3,7 +3,7 @@ require 'sinatra/base'
 require 'rack/test'
 require './lib/app'
 
-class IdeaboxAppHelper < Minitest::Test
+class IdeaboxAppHelper < Minitest::Unit::TestCase
   include Rack::Test::Methods
 
   def app

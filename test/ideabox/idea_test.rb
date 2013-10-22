@@ -1,7 +1,7 @@
 require './test/test_helper'
 require './lib/ideabox/idea'
 
-class IdeaTest < Minitest::Test
+class IdeaTest < Minitest::Unit::TestCase
 
   def test_basic_idea
     idea = Idea.new("title", "description")
