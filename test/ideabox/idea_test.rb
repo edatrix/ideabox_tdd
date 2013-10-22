@@ -3,10 +3,6 @@ require './lib/ideabox/idea'
 
 class IdeaTest < Minitest::Test
 
-  def test_it_exists
-    assert Idea
-  end
-
   def test_basic_idea
     idea = Idea.new("title", "description")
     assert_equal "title", idea.title
@@ -22,7 +18,7 @@ class IdeaTest < Minitest::Test
 
   def test_ideas_can_be_liked_more_than_once
     idea = Idea.new("exercise", "stickfighting")
-    assert_equal 0, idea.rank
+    assert_equal 0, idea.rank #guard clause
     5.times do
       idea.like!
     end
