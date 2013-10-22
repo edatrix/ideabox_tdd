@@ -12,7 +12,7 @@ class IdeaStoreTest < Minitest::Unit::TestCase
     idea = Idea.new("celebrate", "with champagne")
     id = IdeaStore.save(idea)
 
-    assert_equal 1, IdeaStore.count
+    assert_equal 7, IdeaStore.count
 
     idea = IdeaStore.find(id)
     assert_equal "celebrate", idea.title
@@ -27,7 +27,7 @@ class IdeaStoreTest < Minitest::Unit::TestCase
     id2 = IdeaStore.save(idea2)
     id3 = IdeaStore.save(idea3)
 
-    assert_equal 3, IdeaStore.count
+    assert_equal 10, IdeaStore.count
 
     idea = IdeaStore.find(id2)
     assert_equal "inspiration", idea.title
@@ -49,6 +49,16 @@ class IdeaStoreTest < Minitest::Unit::TestCase
     idea = IdeaStore.find(id)
     assert_equal "cocktails", idea.title
     assert_equal "spicy tomato juice with vodka", idea.description
+  end
+
+  def test_find_by_title
+    IdeaStore.save Idea.new("dance", "like it's the 80s")
+    IdeaStore.save Idea.new("sleep", "like a baby")
+    IdeaStore.save Idea.new("dream", "like anything is possible")
+
+    idea = IdeaStore.find_by_title("sleep")
+
+    assert_equal "like a baby", idea.description
   end
 
   def test_delete_an_idea

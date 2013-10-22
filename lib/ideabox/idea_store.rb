@@ -22,6 +22,12 @@ class IdeaStore
     all = []
   end
 
+  def self.find_by_title(text)
+    all.find do |idea|
+      idea.title == text
+    end
+  end
+
   def self.delete(id)
     all.delete_at(id)
   end
