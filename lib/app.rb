@@ -22,8 +22,8 @@ class IdeaboxApp < Sinatra::Base
   put '/:id' do |id|
     idea = IdeaStore.find(id.to_i)
     idea.title = params[:title]
-    idea/description = params[:description]
-    IdeaStore/save(idea)
+    idea.description = params[:description]
+    IdeaStore.save(idea)
     redirect '/'
   end
 

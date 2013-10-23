@@ -19,7 +19,7 @@ class IdeaStore
   end
 
   def self.delete_all
-    all = []
+    @all = []
   end
 
   def self.find_by_title(text)
